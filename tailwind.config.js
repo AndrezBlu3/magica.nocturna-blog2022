@@ -14,6 +14,9 @@ module.exports = {
       '6xl': '4rem',
     },
     extend: {
+      fontFamily: {
+        lavishly: ['"Lavishly Yours"', 'cursive'],
+      },
       colors: {
         blue: {
           100: '#ebf8ff',

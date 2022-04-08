@@ -1,10 +1,9 @@
 const htmlmin = require('html-minifier');
 const dateFns = require('date-fns');
 const lazyImagesPlugin = require('eleventy-plugin-lazyimages');
-const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(syntaxHighlight);
+  
 
   eleventyConfig.addPlugin(lazyImagesPlugin, {
     transformImgPath: (imgPath) => {
@@ -41,6 +40,16 @@ module.exports = function (eleventyConfig) {
 
     return content;
   });
+
+  eleventyConfig.addPassthroughCopy("./src/assets/vendor");
+  eleventyConfig.addPassthroughCopy("./src/assets/img");
+  eleventyConfig.addPassthroughCopy("./src/assets/styles");
+  eleventyConfig.addPassthroughCopy("./src/assets/vids");
+  eleventyConfig.addPassthroughCopy("./src/assets/js/theme.js");
+
+  eleventyConfig.addPassthroughCopy("./src/assets/isotope/imagesloaded.pkgd.min.js");
+  eleventyConfig.addPassthroughCopy("./src/assets/isotope/isotope.pkgd.min.js");
+  eleventyConfig.addPassthroughCopy("./src/assets/isotope/packery-mode.pkgd.min.js");
 
   return {
     dir: { input: 'src', output: '_site', data: '_data' },
